@@ -61,3 +61,46 @@ struct MovieResponse: Decodable {
     let totalPages: Int
     let totalResults: Int
 }
+
+extension Movie {
+    static let mockData: [Movie] = [
+        Movie(
+            id: 1,
+            title: "Spider-Man",
+            name: nil,
+            overview: "A great movie",
+            posterPath: "/test.jpg",
+            backdropPath: "/backdrop.jpg",
+            voteAverage: 8.5,
+            voteCount: 1000,
+            releaseDate: "2026-01-01",
+            firstAirDate: nil,
+            popularity: 100.0,
+            originalLanguage: "en",
+            originalTitle: "Spider-Man",
+            genreIds: [28, 12],
+            mediaType: "movie",
+            adult: false,
+            video: false
+        ),
+        Movie(
+            id: 2,
+            title: "Avengers",
+            name: nil,
+            overview: "Another great movie",
+            posterPath: "/test2.jpg",
+            backdropPath: "/backdrop2.jpg",
+            voteAverage: 9.0,
+            voteCount: 2000,
+            releaseDate: "2026-02-01",
+            firstAirDate: nil,
+            popularity: 200.0,
+            originalLanguage: "en",
+            originalTitle: "Avengers",
+            genreIds: [28],
+            mediaType: "movie",
+            adult: false,
+            video: false
+        )
+    ]
+}

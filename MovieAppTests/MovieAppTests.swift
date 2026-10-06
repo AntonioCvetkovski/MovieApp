@@ -6,32 +6,54 @@
 //
 
 import XCTest
+@testable import MovieApp
 
-final class MovieAppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class MoviesViewModelTests: XCTestCase {
+    
+    var sut: MoviesViewModel!
+    var mockRepo: MockMovieRepository!
+    
+    override func setUp() {
+        super.setUp()
+        mockRepo = MockMovieRepository()
+        sut = MoviesViewModel(repository: mockRepo)
+    }
+    
+    override func tearDown() {
+        sut = nil
+        mockRepo = nil
+        super.tearDown()
+    }
+    
+    // MARK: - Tests
+    func testInitialState() {
+        XCTAssertTrue(sut.movies.isEmpty)
+        XCTAssertFalse(sut.isLoading)
+        XCTAssertNil(sut.errorMessage)
+    }
+    
+    func testFetchMoviesSuccess() async {
+        await sut.fetchTrendingMovies()
+        let movies = await MainActor.run { sut.movies }
+        XCTAssertFalse(movies.isEmpty)
+        let error = await MainActor.run { sut.errorMessage }
+        XCTAssertNil(error)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testFetchMoviesFailure() async {
+        await MainActor.run { mockRepo.shouldFail = true }
+        await sut.fetchTrendingMovies()
+        let movies = await MainActor.run { sut.movies }
+        XCTAssertTrue(movies.isEmpty)
+        let error = await MainActor.run { sut.errorMessage }
+        XCTAssertNotNil(error)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    func testLoadMoreMovies() async {
+        await sut.fetchTrendingMovies()
+        let initialCount = await MainActor.run { sut.movies.count }
+        await sut.loadMoreMovies()
+        let newCount = await MainActor.run { sut.movies.count }
+        XCTAssertGreaterThan(newCount, initialCount)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

@@ -86,3 +86,29 @@ struct SpokenLanguage: Decodable {
     let englishName: String?
     let name: String?
 }
+
+extension MovieDetail {
+    static let mock = MovieDetail(
+        id: 1,
+        title: "Spider-Man",
+        name: nil,
+        overview: "A great movie",
+        posterPath: "/test.jpg",
+        backdropPath: "/backdrop.jpg",
+        voteAverage: 8.5,
+        voteCount: 1000,
+        releaseDate: "2026-01-01",
+        firstAirDate: nil,
+        popularity: 100.0,
+        originalLanguage: "en",
+        runtime: 120,
+        status: "Released",
+        tagline: "With great power",
+        budget: 200000000,
+        revenue: 500000000,
+        homepage: nil,
+        genres: [Genre(id: 28, name: "Action")],
+        productionCompanies: nil,
+        spokenLanguages: nil
+    )
+}
