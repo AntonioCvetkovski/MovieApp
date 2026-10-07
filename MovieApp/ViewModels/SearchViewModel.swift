@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import MovieCore
 
 enum SearchType: String, CaseIterable {
     case movies = "Movies"

@@ -7,60 +7,60 @@
 
 import Foundation
 
-struct MovieDetail: Identifiable, Decodable {
-    let id: Int
-    let title: String?
-    let name: String?
-    let overview: String?
-    let posterPath: String?
-    let backdropPath: String?
-    let voteAverage: Double?
-    let voteCount: Int?
-    let releaseDate: String?
-    let firstAirDate: String?
-    let popularity: Double?
-    let originalLanguage: String?
-    let runtime: Int?
-    let status: String?
-    let tagline: String?
-    let budget: Int?
-    let revenue: Int?
-    let homepage: String?
-    let genres: [Genre]?
-    let productionCompanies: [ProductionCompany]?
-    let spokenLanguages: [SpokenLanguage]?
+public struct MovieDetail: Identifiable, Decodable {
+    public let id: Int
+    public let title: String?
+    public let name: String?
+    public let overview: String?
+    public let posterPath: String?
+    public let backdropPath: String?
+    public let voteAverage: Double?
+    public let voteCount: Int?
+    public let releaseDate: String?
+    public let firstAirDate: String?
+    public let popularity: Double?
+    public let originalLanguage: String?
+    public let runtime: Int?
+    public let status: String?
+    public let tagline: String?
+    public let budget: Int?
+    public let revenue: Int?
+    public let homepage: String?
+    public let genres: [Genre]?
+    public let productionCompanies: [ProductionCompany]?
+    public let spokenLanguages: [SpokenLanguage]?
     
-    var displayTitle: String {
+    public var displayTitle: String {
         title ?? name ?? "Unknown"
     }
     
-    var displayDate: String {
+    public var displayDate: String {
         releaseDate ?? firstAirDate ?? "Unknown"
     }
     
-    var posterURL: String? {
+    public var posterURL: String? {
         guard let path = posterPath else { return nil }
         return APIConstants.imageBaseURL + APIConstants.ImageSize.medium + path
     }
     
-    var backdropURL: String? {
+    public var backdropURL: String? {
         guard let path = backdropPath else { return nil }
         return APIConstants.imageBaseURL + APIConstants.ImageSize.high + path
     }
     
-    var formattedRating: String {
+    public var formattedRating: String {
         guard let rating = voteAverage else { return "N/A" }
         return String(format: "%.1f", rating)
     }
     
-    var formattedRuntime: String {
+    public var formattedRuntime: String {
         guard let runtime = runtime else { return "N/A" }
         let hours = runtime / 60
         let minutes = runtime % 60
         return "\(hours)h \(minutes)m"
     }
     
-    var formattedBudget: String {
+    public var formattedBudget: String {
         guard let budget = budget, budget > 0 else { return "N/A" }
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -69,26 +69,30 @@ struct MovieDetail: Identifiable, Decodable {
     }
 }
 
-// MARK: - Supporting Models
-struct Genre: Identifiable, Decodable {
-    let id: Int
-    let name: String
+public struct Genre: Identifiable, Decodable {
+    public let id: Int
+    public let name: String
+    
+    public init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
 }
 
-struct ProductionCompany: Identifiable, Decodable {
-    let id: Int
-    let name: String
-    let logoPath: String?
-    let originCountry: String?
+public struct ProductionCompany: Identifiable, Decodable {
+    public let id: Int
+    public let name: String
+    public let logoPath: String?
+    public let originCountry: String?
 }
 
-struct SpokenLanguage: Decodable {
-    let englishName: String?
-    let name: String?
+public struct SpokenLanguage: Decodable {
+    public let englishName: String?
+    public let name: String?
 }
 
 extension MovieDetail {
-    static let mock = MovieDetail(
+    public static let mock = MovieDetail(
         id: 1,
         title: "Spider-Man",
         name: nil,

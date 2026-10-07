@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol APIManagerProtocol {
+public protocol APIManagerProtocol {
     func request<T: Decodable>(_ endpoint: String, queryItems: [URLQueryItem]?) async throws -> T
 }
 
-class APIManager: APIManagerProtocol {
+public class APIManager: APIManagerProtocol {
     
     static let shared = APIManager()
-    private init() {}
+    public init() {}
     
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
@@ -22,7 +22,7 @@ class APIManager: APIManagerProtocol {
         return URLSession(configuration: config)
     }()
     
-    func request<T: Decodable>(_ endpoint: String, queryItems: [URLQueryItem]? = nil) async throws -> T {
+    public func request<T: Decodable>(_ endpoint: String, queryItems: [URLQueryItem]? = nil) async throws -> T {
         
         // ✅ Build URL
         guard var components = URLComponents(string: APIConstants.baseURL + endpoint) else {

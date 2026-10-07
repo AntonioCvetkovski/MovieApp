@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import MovieCore
 
 class FavoritesManager: ObservableObject {
     

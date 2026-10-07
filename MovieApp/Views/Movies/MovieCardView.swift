@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MovieCore
 
 struct MovieCardView: View {
     
@@ -17,10 +18,29 @@ struct MovieCardView: View {
             VStack(alignment: .leading, spacing: 0) {
                 
                 // Poster Image
-                MovieImageView(url: URL(string: movie.posterURL ?? ""))
-                    .frame(height: 220)
-                    .frame(maxWidth: .infinity)
-                    .clipped()
+                AsyncImage(url: URL(string: movie.posterURL ?? "")) { phase in
+                    switch phase {
+                    case .empty:
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .overlay { ProgressView().tint(.red) }
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    case .failure:
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .overlay {
+                                Image(systemName: "film")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.gray)
+                            }
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
+                .frame(height: 220)
                 
                 // Info
                 VStack(alignment: .leading, spacing: 4) {
