@@ -7,7 +7,7 @@
 
 
 import Foundation
-@testable import MovieApp
+@testable import MovieCore
 
 class MockMovieRepository: MovieRepositoryProtocol {
     
