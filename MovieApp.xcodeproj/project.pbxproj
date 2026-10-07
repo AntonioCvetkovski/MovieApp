@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		73DBDBDC307547CF00C0375D /* MovieImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DBDBDA307547CF00C0375D /* MovieImageView.swift */; };
 		73DBDBE03075484900C0375D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 73DBDBDF3075484900C0375D /* Kingfisher */; };
+		73DBDBE430762EC800C0375D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 73DBDBE330762EC400C0375D /* README.md */; };
+		73DBDBE530762EC800C0375D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 73DBDBE330762EC400C0375D /* README.md */; };
+		73DBDBE630762EC800C0375D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 73DBDBE330762EC400C0375D /* README.md */; };
 		73F6DFCB3073E7E0007031DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6DFC73073E7E0007031DF /* ContentView.swift */; };
 		73F6DFCC3073E7E0007031DF /* MovieAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6DFC83073E7E0007031DF /* MovieAppApp.swift */; };
 		73F6DFCD3073E7E0007031DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73F6DFC63073E7E0007031DF /* Assets.xcassets */; };
@@ -56,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		73DBDBDA307547CF00C0375D /* MovieImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageView.swift; sourceTree = "<group>"; };
+		73DBDBE330762EC400C0375D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		73F6DF9D3073E646007031DF /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F6DFAA3073E647007031DF /* MovieAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73F6DFB43073E647007031DF /* MovieAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +158,7 @@
 		73F6DFC93073E7E0007031DF /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				73DBDBE330762EC400C0375D /* README.md */,
 				73F6E00E307420CB007031DF /* Managers */,
 				73F6DFF63073F050007031DF /* Views */,
 				73F6DFE93073ECE6007031DF /* ViewModels */,
@@ -376,6 +381,7 @@
 		73F6DF9B3073E646007031DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				73DBDBE630762EC800C0375D /* README.md in Resources */,
 				73F6DFCD3073E7E0007031DF /* Assets.xcassets in Resources */,
 				73F6E01F30742A1E007031DF /* .swiftlint.yml  in Resources */,
 			);
@@ -383,6 +389,7 @@
 		73F6DFA83073E647007031DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				73DBDBE530762EC800C0375D /* README.md in Resources */,
 				73F6DFCE3073E7E0007031DF /* Assets.xcassets in Resources */,
 				73F6E02030742A1E007031DF /* .swiftlint.yml  in Resources */,
 			);
@@ -390,6 +397,7 @@
 		73F6DFB23073E647007031DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				73DBDBE430762EC800C0375D /* README.md in Resources */,
 				73F6DFD33073E7E0007031DF /* Assets.xcassets in Resources */,
 				73F6E02130742A1E007031DF /* .swiftlint.yml  in Resources */,
 			);
